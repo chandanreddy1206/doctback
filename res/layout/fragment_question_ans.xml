@@ -2,70 +2,49 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+    <LinearLayout 
+        android:id="@+id/question_ans_linearlayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/question_ans_location"
-        android:layout_width="wrap_content"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Small Text"
+        android:text="loc"
+        android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <EditText
-        android:id="@+id/question_ans_edittext"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/question_ans_age"
+        android:layout_width="0dip"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:ems="10" >
+        android:text="age"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <requestFocus />
-    </EditText>
+    <TextView
+        android:id="@+id/question_ans_gender"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="gender"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <Button
+    <TextView
         android:id="@+id/question_ans_doctor_catogery"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Button" />
-
+        android:layout_weight="1"
+        android:text="cat"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+	</LinearLayout>
     <ListView
         android:id="@+id/question_ans_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="97dp" >
+        android:layout_below="@+id/question_ans_linearlayout" >
     </ListView>
-
-    <TextView
-        android:id="@+id/question_ans_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/question_ans_location"
-        android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/question_ans_age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/button1"
-        android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/question_ans_age"
-        android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

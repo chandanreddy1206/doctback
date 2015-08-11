@@ -17,7 +17,7 @@
 
     <RatingBar
         android:id="@+id/doctor_rating_bar"
-        android:layout_width="100dip"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5" 
         android:stepSize="1.0"

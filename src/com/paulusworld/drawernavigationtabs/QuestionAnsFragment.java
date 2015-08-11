@@ -39,7 +39,6 @@ public class QuestionAnsFragment extends Fragment
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		Toast.makeText(getActivity(), "onCreateViewQAF", Toast.LENGTH_SHORT).show();
 		
 		Bundle args= getArguments();
@@ -54,7 +53,6 @@ public class QuestionAnsFragment extends Fragment
 		age = (TextView) view.findViewById(R.id.question_ans_age);
 		doctorCategory = (TextView) view.findViewById(R.id.question_ans_doctor_catogery);
 		questionAnsListView = (ListView) view.findViewById(R.id.question_ans_listview);
-		questionAnsEditText = (EditText) view.findViewById(R.id.question_ans_edittext);
 		
 		location.setText("Hyd");
 		doctorCategory.setText("abc");
