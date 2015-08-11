@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<item type="color" name="tile_title">#000</item>  
+<item type="color" name="actionbar_title">#000 </item>  
+</resources>
