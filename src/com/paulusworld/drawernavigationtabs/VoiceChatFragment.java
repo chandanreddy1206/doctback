@@ -100,7 +100,6 @@ import android.widget.TextView;
 				doctor.setRating(i%5);
 				doctors.add(doctor);
 			}
-			
 			doctorGridView.setAdapter(new CustomDoctorGridAdapter(callbackActivity, doctors));
 			return rootView;
 		}

@@ -15,11 +15,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.paulusworld.drawernavigationtabs.ChatVoiceMessage;
 import com.paulusworld.drawernavigationtabs.QuestionAnsFragment;
 import com.paulusworld.drawernavigationtabs.R;
 import com.paulusworld.drawernavigationtabs.bean.Doctor;
+import com.paulusworld.drawernavigationtabs.util.CustomVolleyRequestQueue;
 
 public class CustomDoctorGridAdapter extends BaseAdapter
 {
@@ -65,6 +66,12 @@ public class CustomDoctorGridAdapter extends BaseAdapter
 			holder.doctorRatingBar.setEnabled(false);
 			holder.doctorName.setText(doctor.getName());
 			holder.doctorRatingBar.setRating(doctor.getRating());
+			
+			ImageLoader imageLoader = CustomVolleyRequestQueue.getInstance(callbackActivity.getApplicationContext()).getImageLoader();
+			// Image URL - This can point to any image file supported by Android
+			imageLoader.get("acb", ImageLoader.getImageListener(holder.doctorImageView,
+					R.drawable.doctor, R.drawable.doctor));
+			holder.doctorImageView.setImageUrl("abc", imageLoader);
 //			holder.doctorImageView.set   TODO
 			
 			doctorView.setOnClickListener(new View.OnClickListener() {
