@@ -2,12 +2,6 @@ package com.paulusworld.drawernavigationtabs.adapter;
 
 import java.util.List;
 
-import com.android.volley.toolbox.NetworkImageView;
-import com.paulusworld.drawernavigationtabs.QuestionAnsFragment;
-import com.paulusworld.drawernavigationtabs.R;
-import com.paulusworld.drawernavigationtabs.TabbedActivity;
-import com.paulusworld.drawernavigationtabs.bean.Doctor;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -20,6 +14,12 @@ import android.widget.BaseAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.toolbox.NetworkImageView;
+import com.paulusworld.drawernavigationtabs.ChatVoiceMessage;
+import com.paulusworld.drawernavigationtabs.QuestionAnsFragment;
+import com.paulusworld.drawernavigationtabs.R;
+import com.paulusworld.drawernavigationtabs.bean.Doctor;
 
 public class CustomDoctorGridAdapter extends BaseAdapter
 {
@@ -62,7 +62,7 @@ public class CustomDoctorGridAdapter extends BaseAdapter
 			holder.doctorImageView = (NetworkImageView) doctorView.findViewById(R.id.doctor_network_image_view);
 			holder.doctorName = (TextView) doctorView.findViewById(R.id.doctor_name);
 			holder.doctorRatingBar = (RatingBar) doctorView.findViewById(R.id.doctor_rating_bar);
-			
+			holder.doctorRatingBar.setEnabled(false);
 			holder.doctorName.setText(doctor.getName());
 			holder.doctorRatingBar.setRating(doctor.getRating());
 //			holder.doctorImageView.set   TODO
@@ -77,14 +77,14 @@ public class CustomDoctorGridAdapter extends BaseAdapter
 //					args.putSerializable("doctor", doctor);
 //					questionAnsFragment.setArguments(args);
 					
-					TabbedActivity tabbedActivity= TabbedActivity.newInstance();
+					QuestionAnsFragment questionAnsFragment= QuestionAnsFragment.newInstance();
 					Bundle args= new Bundle();
 					args.putInt("target", 1);
-					tabbedActivity.setArguments(args);
+					questionAnsFragment.setArguments(args);
 					
 					FragmentManager fragmentManager= callbackActivity.getSupportFragmentManager();
 					FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-					fragmentTransaction.replace(R.id.content_frame, tabbedActivity, QuestionAnsFragment.TAG);
+					fragmentTransaction.replace(R.id.content_frame, questionAnsFragment, QuestionAnsFragment.TAG);
 					fragmentTransaction.addToBackStack("tag");
 					fragmentTransaction.commit();
 				}

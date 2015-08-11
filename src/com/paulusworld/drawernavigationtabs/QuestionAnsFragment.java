@@ -1,5 +1,6 @@
 package com.paulusworld.drawernavigationtabs;
 
+import com.paulusworld.drawernavigationtabs.adapter.CustomChatVoiceMessageListAdapter;
 import com.paulusworld.drawernavigationtabs.bean.Doctor;
 import com.paulusworld.drawernavigationtabs.bean.User;
 import com.paulusworld.drawernavigationtabs.util.SharingPreferences;
@@ -25,6 +26,17 @@ public class QuestionAnsFragment extends Fragment
 	private TextView doctorCategory;
 	private ListView questionAnsListView;
 	private EditText questionAnsEditText;
+	
+	public static QuestionAnsFragment newInstance()
+	{
+		return new QuestionAnsFragment();
+	}
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -45,9 +57,11 @@ public class QuestionAnsFragment extends Fragment
 		questionAnsEditText = (EditText) view.findViewById(R.id.question_ans_edittext);
 		
 		location.setText("Hyd");
-		gender.setText(user.getGender());
-		doctorCategory.setText(doctor.getCategory());
-	
-		return super.onCreateView(inflater, container, savedInstanceState);
+		doctorCategory.setText("abc");
+		gender.setText("M");
+//		gender.setText(user.getGender());
+//		doctorCategory.setText(doctor.getCategory());
+		questionAnsListView.setAdapter(new CustomChatVoiceMessageListAdapter(getActivity()));
+		return view;
 	}
 }

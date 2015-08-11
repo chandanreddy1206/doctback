@@ -20,6 +20,7 @@
         android:layout_width="100dip"
         android:layout_height="wrap_content"
         android:numStars="5" 
-        android:stepSize="1.0"/>
+        android:stepSize="1.0"
+        style="?android:attr/ratingBarStyleSmall"/>
 
 </LinearLayout>
