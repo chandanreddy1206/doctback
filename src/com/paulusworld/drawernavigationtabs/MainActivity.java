@@ -157,6 +157,10 @@ public class MainActivity extends FragmentActivity {
 			getSupportFragmentManager().beginTransaction()
 					.replace(R.id.content_frame, ChatActivity.newInstance(), ChatActivity.TAG).commit();
 			break;
+		case 3:
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.content_frame, UserProfileFragment.newInstance(), ChatActivity.TAG).commit();
+			break;
 		}
 		mDrawerLayout.closeDrawer(mDrawerList);
 	}

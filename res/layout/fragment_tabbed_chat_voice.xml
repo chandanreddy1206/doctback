@@ -12,7 +12,7 @@
 
   
 
-    <LinearLayout
+    <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="20dip"
         android:orientation="horizontal" >
@@ -44,7 +44,7 @@
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
-
+ -->
     <RadioGroup
         android:id="@+id/chat_voice_doctor_category"
         android:layout_width="match_parent"
