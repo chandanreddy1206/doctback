@@ -69,9 +69,9 @@ public class CustomDoctorGridAdapter extends BaseAdapter
 			
 			ImageLoader imageLoader = CustomVolleyRequestQueue.getInstance(callbackActivity.getApplicationContext()).getImageLoader();
 			// Image URL - This can point to any image file supported by Android
-			imageLoader.get("acb", ImageLoader.getImageListener(holder.doctorImageView,
+			imageLoader.get("http://cliparts101.com/files/828/444D99AD3598558DAE6CAC3676A3A97D/Doctor_01.png", ImageLoader.getImageListener(holder.doctorImageView,
 					R.drawable.doctor, R.drawable.doctor));
-			holder.doctorImageView.setImageUrl("abc", imageLoader);
+			holder.doctorImageView.setImageUrl("http://cliparts101.com/files/828/444D99AD3598558DAE6CAC3676A3A97D/Doctor_01.png", imageLoader);
 //			holder.doctorImageView.set   TODO
 			
 			doctorView.setOnClickListener(new View.OnClickListener() {

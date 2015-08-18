@@ -27,9 +27,9 @@ import android.widget.TextView;
 
 		private ArrayAdapter<String> listAdapter;
 
-		private TextView location;
+		/*private TextView location;
 		private TextView gender;
-		private TextView age;
+		private TextView age;*/
 		private RadioGroup doctorCategory;
 		private RadioButton doctorGP;
 		private RadioButton doctorExpert;
@@ -84,9 +84,9 @@ import android.widget.TextView;
 				}
 			});*/
 			
-			location = (TextView) rootView.findViewById(R.id.chat_voice_location);
+			/*location = (TextView) rootView.findViewById(R.id.chat_voice_location);
 			gender = (TextView) rootView.findViewById(R.id.chat_voice_gender);
-			age = (TextView) rootView.findViewById(R.id.chat_voice_age);
+			age = (TextView) rootView.findViewById(R.id.chat_voice_age);*/
 			doctorCategory = (RadioGroup) rootView.findViewById(R.id.chat_voice_doctor_category);
 			doctorGP = (RadioButton) rootView.findViewById(R.id.chat_voice_gp);
 			doctorExpert = (RadioButton) rootView.findViewById(R.id.chat_voice_expert);

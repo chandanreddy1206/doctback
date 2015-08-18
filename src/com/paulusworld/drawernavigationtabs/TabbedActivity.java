@@ -1,15 +1,24 @@
 package com.paulusworld.drawernavigationtabs;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import com.paulusworld.drawernavigationtabs.adapter.CustomMyAppointmentsListAdapter;
+import com.paulusworld.drawernavigationtabs.bean.Event;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class TabbedActivity extends Fragment {
@@ -71,6 +80,11 @@ public class TabbedActivity extends Fragment {
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
+		
+			if(position == 0)
+			{
+				return new MyAppointmentsFragment();
+			}
 			Fragment fragment = new DummySectionFragment();
 			Bundle args = new Bundle();
 			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
@@ -122,4 +136,38 @@ public class TabbedActivity extends Fragment {
 		}
 	}
 
+	public static class MyAppointmentsFragment extends Fragment
+	{
+		private FragmentActivity callbackActivity;
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_myappointments, container, false);
+			
+			
+			ListView listView = (ListView) rootView.findViewById(R.id.myapointments_listview);
+			List<Event> events = new ArrayList<Event>();
+			Event event;
+			for(int i=0;i<10;i++)
+			{
+				event = new Event();
+				event.setEventId("id"+i);
+				event.setEventName("Name : "+i);
+				event.setDescription("Description : "+i);
+				event.setPlace("Place : "+i);
+				event.setFromDate(new Date());
+				event.setToDate(new Date());
+				events.add(event);
+			}
+			listView.setAdapter(new CustomMyAppointmentsListAdapter(callbackActivity,events));
+			return rootView;
+		}
+		@Override
+		public void onAttach(Activity activity) {
+			// TODO Auto-generated method stub
+			super.onAttach(activity);
+			callbackActivity=(FragmentActivity)activity;
+		}
+	}
 }

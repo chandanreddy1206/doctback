@@ -9,6 +9,7 @@
         <item>Home</item>
         <item>Events</item>
         <item>Chat</item>
+        <item>Profile</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
@@ -18,14 +19,14 @@
     <string name="title_section2">Health Events</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_tabbed">Events</string>
-	<string name="chat_voice">Voice Chat</string>
+    <string name="chat_voice">Voice Chat</string>
     <string name="chat_video">Video Chat</string>
-   <string name="registration_title">Register</string> 
-   
-<!--    Home Screen strings -->
-	<string name="home_title_askdocter">Ask a Docter</string>
-	<string name="home_title_events">Events</string>
-	<string name="home_title_video_call">Video Call</string>
-	<string name="home_title_appoinments">Appointments</string>
-	
+    <string name="registration_title">Register</string>
+
+    <!-- Home Screen strings -->
+    <string name="home_title_askdocter">Ask a Docter</string>
+    <string name="home_title_events">Events</string>
+    <string name="home_title_video_call">Video Call</string>
+    <string name="home_title_appoinments">Appointments</string>
+
 </resources>

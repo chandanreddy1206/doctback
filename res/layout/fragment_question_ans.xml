@@ -2,43 +2,40 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <LinearLayout 
+    <LinearLayout
         android:id="@+id/question_ans_linearlayout"
-        android:orientation="horizontal"
-        android:layout_width="match_parent" 
-        android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/question_ans_location"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="loc"
-        android:layout_weight="1"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:orientation="vertical" 
+        android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/question_ans_age"
-        android:layout_width="0dip"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="age"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/question_ans_doctor_network_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY" />
 
-    <TextView
-        android:id="@+id/question_ans_gender"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="gender"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/question_ans_doctor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
-    <TextView
-        android:id="@+id/question_ans_doctor_catogery"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="cat"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-	</LinearLayout>
+        <TextView
+            android:id="@+id/question_ans_doctor_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <RatingBar
+            android:id="@+id/question_ans_doctor_rating_bar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/question_ans_listview"
         android:layout_width="match_parent"

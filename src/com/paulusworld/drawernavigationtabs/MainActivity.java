@@ -1,5 +1,9 @@
 package com.paulusworld.drawernavigationtabs;
 
+import com.paulusworld.drawernavigationtabs.bean.User;
+import com.paulusworld.drawernavigationtabs.util.SharingPreferences;
+
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,6 +41,20 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		SharingPreferences<User> sharingPreferences = new SharingPreferences<User>();
+		User user= sharingPreferences.get(this, "user", User.class);
+ 		if(user == null)
+ 		{
+ 			user= new User();
+ 			user.setAge(21);
+ 			user.setEmail("bchandan2@gmail.com");
+ 			user.setGender("male");
+ 			user.setIsPremiumUser(false);
+ 			user.setName("Chandan Kumar Bandaru");
+ 			user.setProfilePic("https://lh5.googleusercontent.com/-k1Ygni_jw0s/AAAAAAAAAAI/AAAAAAAAAAA/kQ8LiVEo9pE/s32-c/photo.jpg");
+ 			sharingPreferences.save(this, "user", user);
+ 		}
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
@@ -156,6 +174,10 @@ public class MainActivity extends FragmentActivity {
 		case 2:
 			getSupportFragmentManager().beginTransaction()
 					.replace(R.id.content_frame, ChatActivity.newInstance(), ChatActivity.TAG).commit();
+			break;
+		case 3:
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.content_frame, UserProfileFragment.newInstance(), ChatActivity.TAG).commit();
 			break;
 		}
 		mDrawerLayout.closeDrawer(mDrawerList);

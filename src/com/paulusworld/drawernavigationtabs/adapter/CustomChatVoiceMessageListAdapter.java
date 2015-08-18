@@ -82,7 +82,8 @@ public class CustomChatVoiceMessageListAdapter extends BaseAdapter {
 			PlayVoiceMessageClickListener voiceMessageClickListener = new PlayVoiceMessageClickListener(
 					holder, voiceMessage);
 			holder.play.setOnClickListener(voiceMessageClickListener);
-			holder.seekBar.setOnSeekBarChangeListener(new VoiceMessageSeekBarChangeListener());
+			holder.seekBar
+					.setOnSeekBarChangeListener(new VoiceMessageSeekBarChangeListener());
 			holder.seekBar.setEnabled(false);
 			return view;
 		} else {
@@ -114,17 +115,31 @@ public class CustomChatVoiceMessageListAdapter extends BaseAdapter {
 						@Override
 						public void run() {
 							if (mediaPlayer != null) {
-								int mCurrentPosition = mediaPlayer
-										.getCurrentPosition() / 1000;
-								if (mCurrentPosition < duration) {
-									holder.seekBar
-											.setProgress(mCurrentPosition);
-									mHandler.postDelayed(this, 1000);
-								} else {
-									holder.seekBar.setEnabled(false);
-									AudioUtil.stopPlaying();
-									holder.seekBar.setProgress(0);
-									holder.play.setChecked(false);
+								try {
+									int mCurrentPosition = mediaPlayer
+											.getCurrentPosition() / 1000;
+									if (mCurrentPosition < duration) {
+										holder.seekBar
+												.setProgress(mCurrentPosition);
+										mHandler.postDelayed(this, 1000);
+									} else {
+										holder.seekBar.setEnabled(false);
+										AudioUtil.stopPlaying();
+										holder.seekBar.setProgress(0);
+										holder.play.setChecked(false);
+									}
+								} catch (Exception e) {
+									e.printStackTrace();
+									try{
+										holder.seekBar.setEnabled(false);
+										holder.seekBar.setProgress(0);
+										holder.play.setChecked(false);
+										AudioUtil.stopPlaying();
+									}
+									catch(Exception e1)
+									{
+										e1.printStackTrace();
+									}
 								}
 							}
 						}
