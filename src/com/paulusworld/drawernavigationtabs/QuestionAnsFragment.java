@@ -113,9 +113,12 @@ public class QuestionAnsFragment extends Fragment implements OnClickListener {
 		VoiceMessage voiceMessage = new VoiceMessage();
 		voiceMessage.setLocalFileUlr("doctorquestion.3gp");
 		voiceMessages.add(voiceMessage);
+<<<<<<< HEAD
 		VoiceMessage voiceMessage2 = new VoiceMessage();
 		voiceMessage.setLocalFileUlr("doctorquestion.3gp");
 		voiceMessages.add(voiceMessage2);
+=======
+>>>>>>> origin/master
 		questionAnsListView.setAdapter(new CustomChatVoiceMessageListAdapter(
 				getActivity(),voiceMessages));
 		return view;
