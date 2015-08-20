@@ -1,13 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-
+<LinearLayout 
+     android:id="@+id/question_ans_linearlayout"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:gravity="fill_horizontal">
+    
     <LinearLayout
-        android:id="@+id/question_ans_linearlayout"
-        android:layout_width="match_parent"
+       
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" 
-        android:gravity="center_horizontal">
+        android:gravity="left">
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/question_ans_doctor_network_image_view"
@@ -34,6 +40,14 @@
             android:layout_height="wrap_content"
             android:numStars="5"
             android:stepSize="1.0" />
+      </LinearLayout>  
+        <Button
+        android:id="@+id/question_ans_book_appointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Book Appointment" 
+        android:gravity="right"/>
     </LinearLayout>
 
     <ListView
@@ -69,5 +83,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="Send" />
+
+    
 
 </RelativeLayout>

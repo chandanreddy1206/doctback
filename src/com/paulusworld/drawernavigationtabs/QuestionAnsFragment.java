@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,20 +46,23 @@ public class QuestionAnsFragment extends Fragment implements OnClickListener {
 	private ToggleButton record;
 	private ToggleButton play;
 	private Button send;
+	private Button bookAppointment;
 	private MediaPlayer mPlayer = null;
 	private MediaRecorder mRecorder = null;
 
 	private FragmentActivity callbackActivity;
-	
+
 	public static QuestionAnsFragment newInstance() {
 		return new QuestionAnsFragment();
 	}
+
 	@Override
 	public void onAttach(Activity activity) {
 		// TODO Auto-generated method stub
 		super.onAttach(activity);
-		callbackActivity=(FragmentActivity)activity;
+		callbackActivity = (FragmentActivity) activity;
 	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -65,8 +70,7 @@ public class QuestionAnsFragment extends Fragment implements OnClickListener {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		Bundle args = getArguments();
 		Doctor doctor = (Doctor) args.getSerializable("doctor");
@@ -75,19 +79,13 @@ public class QuestionAnsFragment extends Fragment implements OnClickListener {
 
 		View view = inflater.inflate(R.layout.fragment_question_ans, null);
 
-		doctorImageView = (NetworkImageView) view
-				.findViewById(R.id.question_ans_doctor_network_image_view);
-		doctorName = (TextView) view
-				.findViewById(R.id.question_ans_doctor_name);
-		doctorCategory = (TextView) view
-				.findViewById(R.id.question_ans_doctor_category);
-		doctorCategory = (TextView) view
-				.findViewById(R.id.question_ans_doctor_category);
-		doctorRating = (RatingBar) view
-				.findViewById(R.id.question_ans_doctor_rating_bar);
-		questionAnsListView = (ListView) view
-				.findViewById(R.id.question_ans_listview);
-		
+		doctorImageView = (NetworkImageView) view.findViewById(R.id.question_ans_doctor_network_image_view);
+		doctorName = (TextView) view.findViewById(R.id.question_ans_doctor_name);
+		doctorCategory = (TextView) view.findViewById(R.id.question_ans_doctor_category);
+		doctorCategory = (TextView) view.findViewById(R.id.question_ans_doctor_category);
+		doctorRating = (RatingBar) view.findViewById(R.id.question_ans_doctor_rating_bar);
+		questionAnsListView = (ListView) view.findViewById(R.id.question_ans_listview);
+
 		record = (ToggleButton) view.findViewById(R.id.question_ans_record);
 		play = (ToggleButton) view.findViewById(R.id.question_ans_play);
 		send = (Button) view.findViewById(R.id.question_ans_send);
@@ -96,31 +94,32 @@ public class QuestionAnsFragment extends Fragment implements OnClickListener {
 		play.setOnClickListener(this);
 		send.setOnClickListener(this);
 
-		ImageLoader imageLoader = CustomVolleyRequestQueue.getInstance(callbackActivity.getApplicationContext()).getImageLoader();
+		ImageLoader imageLoader = CustomVolleyRequestQueue.getInstance(callbackActivity.getApplicationContext())
+				.getImageLoader();
 		// Image URL - This can point to any image file supported by Android
-		imageLoader.get("http://cliparts101.com/files/828/444D99AD3598558DAE6CAC3676A3A97D/Doctor_01.png", ImageLoader.getImageListener(doctorImageView,
-				R.drawable.doctor, R.drawable.doctor));
-		doctorImageView.setImageUrl("http://cliparts101.com/files/828/444D99AD3598558DAE6CAC3676A3A97D/Doctor_01.png", imageLoader);
-		
+		imageLoader.get("http://cliparts101.com/files/828/444D99AD3598558DAE6CAC3676A3A97D/Doctor_01.png",
+				ImageLoader.getImageListener(doctorImageView, R.drawable.doctor, R.drawable.doctor));
+		doctorImageView.setImageUrl("http://cliparts101.com/files/828/444D99AD3598558DAE6CAC3676A3A97D/Doctor_01.png",
+				imageLoader);
+
 		doctorName.setText("Name");
 		doctorCategory.setText("Category");
 		doctorRating.setRating(2);
-		
-		
+
 		// gender.setText(user.getGender());
 		// doctorCategory.setText(doctor.getCategory());
 		List<VoiceMessage> voiceMessages = new ArrayList<VoiceMessage>();
 		VoiceMessage voiceMessage = new VoiceMessage();
 		voiceMessage.setLocalFileUlr("doctorquestion.3gp");
 		voiceMessages.add(voiceMessage);
-<<<<<<< HEAD
 		VoiceMessage voiceMessage2 = new VoiceMessage();
 		voiceMessage.setLocalFileUlr("doctorquestion.3gp");
 		voiceMessages.add(voiceMessage2);
-=======
->>>>>>> origin/master
-		questionAnsListView.setAdapter(new CustomChatVoiceMessageListAdapter(
-				getActivity(),voiceMessages));
+
+		questionAnsListView.setAdapter(new CustomChatVoiceMessageListAdapter(getActivity(), voiceMessages));
+
+		bookAppointment = (Button) view.findViewById(R.id.question_ans_book_appointment);
+		bookAppointment.setOnClickListener(this);
 		return view;
 	}
 
@@ -133,17 +132,20 @@ public class QuestionAnsFragment extends Fragment implements OnClickListener {
 				AudioUtil.stopRecording();
 			}
 		} else if (v.getId() == play.getId()) {
-			if(play.isChecked())
-			{
+			if (play.isChecked()) {
 				AudioUtil.startPlaying("doctorquestion.3gp");
-			}
-			else
-			{
+			} else {
 				AudioUtil.stopPlaying();
 			}
 
 		} else if (v.getId() == send.getId()) {
 
+		} else if (v.getId() == bookAppointment.getId()) {
+			FragmentManager fragmentManager = callbackActivity.getSupportFragmentManager();
+			FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+			fragmentTransaction.replace(R.id.content_frame, BookAppointmentCalenderFragment.newInstance(), BookAppointmentCalenderFragment.TAG);
+			fragmentTransaction.addToBackStack("tag");
+			fragmentTransaction.commit();
 		}
 	}
 

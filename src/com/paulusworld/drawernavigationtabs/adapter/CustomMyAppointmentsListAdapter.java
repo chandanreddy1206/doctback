@@ -1,5 +1,6 @@
 package com.paulusworld.drawernavigationtabs.adapter;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.paulusworld.drawernavigationtabs.R;
@@ -65,7 +66,8 @@ public class CustomMyAppointmentsListAdapter extends BaseAdapter {
 			eventName.setText(event.getEventName());
 			eventDescription.setText(event.getDescription());
 			eventPlace.setText(event.getPlace());
-			eventTime.setText(event.getFromDate().toString());
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+			eventTime.setText(dateFormat.format(event.getFromDate()));
 			return rootView;
 		} 
 		else {
