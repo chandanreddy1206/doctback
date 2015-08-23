@@ -177,6 +177,11 @@ public class MainActivity extends FragmentActivity {
 			break;
 		case 3:
 			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.content_frame, DoctorAppointmentConformationFragment.newInstance(), DoctorAppointmentConformationFragment.TAG).commit();
+			break;
+		
+		case 4:
+			getSupportFragmentManager().beginTransaction()
 					.replace(R.id.content_frame, UserProfileFragment.newInstance(), ChatActivity.TAG).commit();
 			break;
 		}

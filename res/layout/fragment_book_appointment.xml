@@ -32,4 +32,9 @@
             android:gravity="right"
             android:text="Choose Time" />
     </LinearLayout>
+    <ListView 
+        android:id="@+id/fragment_book_appointment_available_slots"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </ListView>
 </LinearLayout>
