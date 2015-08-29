@@ -10,6 +10,7 @@ public class User implements Serializable{
 	private Boolean isPremiumUser;
 	private String profilePic;
 	private String gender;
+	private String driveFolderId;
 	
 	public String getName() {
 		return name;
@@ -47,6 +48,13 @@ public class User implements Serializable{
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	public String getDriveFolderId() {
+		return driveFolderId;
+	}
+	public void setDriveFolderId(String driveFolderId) {
+		this.driveFolderId = driveFolderId;
 	}
 	@Override
 	public String toString() {

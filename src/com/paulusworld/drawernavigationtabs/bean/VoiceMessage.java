@@ -4,17 +4,16 @@ import java.io.Serializable;
 
 public class VoiceMessage implements Serializable
 {
-	private String messageId;
+	private enum VoiceMessageType{
+		PATIENT_TO_DOCTOR,DOCTOR_TO_PATIENT;
+	}
 	private String localFileUlr;
 	private String driveFileId;
-	private String senderType;
-	private String senderName;
-	public String getMessageId() {
-		return messageId;
-	}
-	public void setMessageId(String messageId) {
-		this.messageId = messageId;
-	}
+	private String title;
+	private String doctorEmail;
+	private String patientEmail;
+	private VoiceMessageType type; // P-D or D-P
+	
 	public String getLocalFileUlr() {
 		return localFileUlr;
 	}
@@ -27,35 +26,49 @@ public class VoiceMessage implements Serializable
 	public void setDriveFileId(String driveFileId) {
 		this.driveFileId = driveFileId;
 	}
-	public String getSenderType() {
-		return senderType;
+	
+	public String getTitle() {
+		return title;
 	}
-	public void setSenderType(String senderType) {
-		this.senderType = senderType;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getSenderName() {
-		return senderName;
+	public String getDoctorEmail() {
+		return doctorEmail;
 	}
-	public void setSenderName(String senderName) {
-		this.senderName = senderName;
+	public void setDoctorEmail(String sender) {
+		this.doctorEmail = sender;
 	}
+	public String getPatientEmail() {
+		return patientEmail;
+	}
+	public void setPatientEmail(String receiver) {
+		this.patientEmail = receiver;
+	}
+	public VoiceMessageType getType() {
+		return type;
+	}
+	public void setType(VoiceMessageType type) {
+		this.type = type;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("VoiceMessage [messageId=").append(messageId)
-				.append(", localFileUlr=").append(localFileUlr)
-				.append(", driveFileId=").append(driveFileId)
-				.append(", senderType=").append(senderType)
-				.append(", senderName=").append(senderName).append("]");
+		builder.append("VoiceMessage [localFileUlr=").append(localFileUlr)
+				.append(", driveFileId=").append(driveFileId).append(", title=").append(title).append(", doctorEmail=")
+				.append(doctorEmail).append(", patientEmail=").append(patientEmail).append(", type=").append(type)
+				.append("]");
 		return builder.toString();
 	}
-	
 	@Override
 	public boolean equals(Object object) {
 		if(object instanceof VoiceMessage)
 		{
 			VoiceMessage voiceMessage = (VoiceMessage)object;
-			if(voiceMessage.getMessageId().equalsIgnoreCase(this.messageId))
+			if(voiceMessage.getDriveFileId().equalsIgnoreCase(this.driveFileId))
 			{
 				return true;
 			}
@@ -64,6 +77,6 @@ public class VoiceMessage implements Serializable
 	}
 	@Override
 	public int hashCode() {
-		return messageId.hashCode();
+		return driveFileId.hashCode();
 	}
 }
